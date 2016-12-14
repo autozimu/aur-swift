@@ -12,12 +12,12 @@ env:
         - DOCKER_CACHE_FILE=$HOME/docker/aur-swift.tar
 
 before_install:
-    - if [ -f ${DOCKER_CACHE_FILE} ]; then docker load --input ${DOCKER_CACHE_FILE}; fi
+    - if [[ -f ${DOCKER_CACHE_FILE} ]]; then docker load --input ${DOCKER_CACHE_FILE}; fi
 
 script:
     - docker run autozimu/aur-swift
     - docker ps -a
-    - docker save autozimu/aur-swift > ${DOCKER_CACHE_FILE}
+    - if [[ ! -f ${DOCKER_CACHE_FILE} ]]; then docker save autozimu/aur-swift > ${DOCKER_CACHE_FILE}; fi
 
 deploy:
     provider: releases
