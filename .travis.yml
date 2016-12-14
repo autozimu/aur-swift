@@ -9,15 +9,15 @@ cache:
 
 env:
     global:
-        - DOCKER_CACHE_FILE=$HOME/docker/aur-swift.tar.gz
+        - DOCKER_CACHE_FILE=$HOME/docker/aur-swift.tar
 
 before_install:
-    - if [ -f ${DOCKER_CACHE_FILE} ]; then gunzip -c ${DOCKER_CACHE_FILE} | docker load; fi
+    - if [ -f ${DOCKER_CACHE_FILE} ]; then docker load --input ${DOCKER_CACHE_FILE}; fi
 
 script:
     - docker run autozimu/aur-swift
     - docker ps -a
-    - docker save $(docker history -q autozimu/aur-swift | grep -v '<missing>') | gzip > ${DOCKER_CACHE_FILE}
+    - docker save autozimu/aur-swift > ${DOCKER_CACHE_FILE}
 
 deploy:
     provider: releases
