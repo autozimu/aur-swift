@@ -8,7 +8,8 @@ cache:
         - $HOME/docker
 
 env:
-    - DOCKER_CACHE_FILE=$HOME/docker/aur-swift.tar.gz
+    global:
+        - DOCKER_CACHE_FILE=$HOME/docker/aur-swift.tar.gz
 
 before_install:
     - if [ -f ${DOCKER_CACHE_FILE} ]; then gunzip -c ${DOCKER_CACHE_FILE} | docker load; fi
@@ -17,3 +18,13 @@ script:
     - docker run autozimu/aur-swift
     - docker ps -a
     - docker save $(docker history -q autozimu/aur-swift | grep -v '<missing>') | gzip > ${DOCKER_CACHE_FILE}
+
+deploy:
+    provider: releases
+        api_key:
+            secure: "np0GyA8NchJFV2iwIVJyoshZYeSkve/KpwU3BdKvM24oCeggavb7dLlGv0EgMg0CTyzTCcDci+F9Tq7bQztYihBUewTfVKrSOFRRJkdGWCzvW6+mBFjMYhmTW5Q9T/5HT87QEyHt3A2R2TSk1JKEiHshqQ+LWVNsAP1LJu1yfDeZIRDLTn9fwWc5QaQODspsKx+uW4Nl7Qbo0gqDyPHxTXVVSCfnYRaMyMjj83iHhpktKd58gz+NRJtwRO5018ll0PmL3wkyVfS0U6ZQYJCawmUtSD1XEXWmKP4W2oxheAMd5E9rdQDtrR8CjqPBYZ94fKu6EiBYh7MYlmwHzG1tZ/5zxpyOuN6Dzw3qLV1uVLtiEtcWpf+7agI3IkLIYPOzQ0ggN3icjaA6R0ljU+Zsj3rtCbO2k2vmqdrJubBoso1IG20dJPVykmQDeUKLqgcRhRgtwDzcsgfcmJ1BiKwHK1it2zAbM6d9pThZhD05hZ3n/Z+7e6ZITeZaOz/7DhtexRC3AF2TQzHpbHo9opSXhvV7LvfQT38XLCL29gsFvC/kHDwVn/8KzRXS0nwDPMSA7FOUe18jBwNZLyUSkE4xUnzmZv8mwWCOgdqFAVwxKpjkOkNNpdA/1O6lfsnJkBnv5iAkgB1MaF0R/+EgJLLkJ/yBma6YvyN3X5p8rMv4e/k="
+    # file: '/tmp/libkqueue/libkqueue-2.1.0-1-x86_64.pkg.tar.gz'
+    file: '/usr/bin/uname'
+    skip_cleanup: true
+    on:
+        tags: true
