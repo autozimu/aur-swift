@@ -16,4 +16,4 @@ before_install:
 script:
     - docker run autozimu/aur-swift
     - docker ps -a
-    - mkdir -p $HOME/docker; docker save $(docker history -q autozimu/aur-swift | grep -v '<missing>') | gzip > ${DOCKER_CACHE_FILE}
+    - docker save $(docker history -q autozimu/aur-swift | grep -v '<missing>') | gzip > ${DOCKER_CACHE_FILE}
