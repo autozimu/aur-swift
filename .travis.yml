@@ -1,0 +1,19 @@
+sudo: required
+language: generic # default to ruby
+services:
+    - docker
+
+cache:
+    directories:
+        - $HOME/docker
+
+env:
+    - DOCKER_CACHE_FILE=$HOME/docker/aur-swift.tar.gz
+
+before_install:
+    - if [ -f ${DOCKER_CACHE_FILE} ]; then gunzip -c ${DOCKER_CACHE_FILE} | docker load; fi
+
+script:
+    - docker run autozimu/aur-swift
+    - docker ps -a
+    - mkdir -p $HOME/docker; docker save $(docker history -q autozimu/aur-swift | grep -v '<missing>') | gzip > ${DOCKER_CACHE_FILE}
