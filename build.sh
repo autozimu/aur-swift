@@ -16,3 +16,4 @@ tar -xvzf swift-language.tar.gz
 cd swift-language
 chown nobody .
 sudo -u nobody makepkg
+
