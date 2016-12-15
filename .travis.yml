@@ -3,21 +3,9 @@ language: generic # default to ruby
 services:
     - docker
 
-cache:
-    directories:
-        - $HOME/docker
-
-env:
-    global:
-        - DOCKER_CACHE_FILE=$HOME/docker/aur-swift.tar
-
-before_install:
-    - if [[ -f ${DOCKER_CACHE_FILE} ]]; then docker load --input ${DOCKER_CACHE_FILE}; fi
-
 script:
     - docker run autozimu/aur-swift
     - docker ps -a
-    - if [[ ! -f ${DOCKER_CACHE_FILE} ]]; then docker save autozimu/aur-swift > ${DOCKER_CACHE_FILE}; fi
 
 deploy:
     provider: releases
