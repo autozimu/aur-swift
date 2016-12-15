@@ -15,7 +15,7 @@ deploy:
     api_key:
         secure: "np0GyA8NchJFV2iwIVJyoshZYeSkve/KpwU3BdKvM24oCeggavb7dLlGv0EgMg0CTyzTCcDci+F9Tq7bQztYihBUewTfVKrSOFRRJkdGWCzvW6+mBFjMYhmTW5Q9T/5HT87QEyHt3A2R2TSk1JKEiHshqQ+LWVNsAP1LJu1yfDeZIRDLTn9fwWc5QaQODspsKx+uW4Nl7Qbo0gqDyPHxTXVVSCfnYRaMyMjj83iHhpktKd58gz+NRJtwRO5018ll0PmL3wkyVfS0U6ZQYJCawmUtSD1XEXWmKP4W2oxheAMd5E9rdQDtrR8CjqPBYZ94fKu6EiBYh7MYlmwHzG1tZ/5zxpyOuN6Dzw3qLV1uVLtiEtcWpf+7agI3IkLIYPOzQ0ggN3icjaA6R0ljU+Zsj3rtCbO2k2vmqdrJubBoso1IG20dJPVykmQDeUKLqgcRhRgtwDzcsgfcmJ1BiKwHK1it2zAbM6d9pThZhD05hZ3n/Z+7e6ZITeZaOz/7DhtexRC3AF2TQzHpbHo9opSXhvV7LvfQT38XLCL29gsFvC/kHDwVn/8KzRXS0nwDPMSA7FOUe18jBwNZLyUSkE4xUnzmZv8mwWCOgdqFAVwxKpjkOkNNpdA/1O6lfsnJkBnv5iAkgB1MaF0R/+EgJLLkJ/yBma6YvyN3X5p8rMv4e/k="
     file_glob: true
-    file: "*.pkg.tar.gz"
+    file: "*.pkg.tar.xz"
     skip_cleanup: true
     on:
         tags: true
