@@ -16,4 +16,3 @@ pacman --noconfirm -U libkqueue
 # cd swift-language
 # chown nobody .
 # sudo -u nobody makepkg
-
