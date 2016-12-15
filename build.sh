@@ -7,6 +7,7 @@ cd /tmp/libkqueue
 curl https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=libkqueue > PKGBUILD
 chown nobody .
 pacman --noconfirm -S sudo # FIXME
+pacman --noconfirm base-devel # FIXME
 sudo -u nobody makepkg
 pacman --noconfirm -U libkqueue-2.1.0-1-x86_64.pkg.tar.xz
 
