@@ -4,7 +4,7 @@ services:
     - docker
 
 script:
-    - docker run --detach --name aur-swift greyltc/archlinux /bin/sh -c "sleep 1d"
+    - docker run --detach --name aur-swift autozimu/aur-swift /bin/sh -c "sleep 1d"
     - docker ps --all
     - docker cp build.sh aur-swift:/root
     - docker exec aur-swift /bin/bash /root/build.sh

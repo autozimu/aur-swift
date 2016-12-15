@@ -1,1 +1,0 @@
-- Install sudo in image.
