@@ -9,6 +9,7 @@ script:
     - docker cp build.sh aur-swift:/root
     - docker exec aur-swift /bin/bash /root/build.sh
     - docker cp aur-swift:/tmp/libkqueue/libkqueue-2.1.0-1-x86_64.pkg.tar.xz .
+    - docker cp aur-swift:/tmp/swift-language/swift-language-3.0.1-RELEASE-x86_64.pkg.tar.xz .
 
 deploy:
     provider: releases
