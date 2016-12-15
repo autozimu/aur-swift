@@ -6,7 +6,8 @@ services:
 script:
     - docker run --detach --name aur-swift greyltc/archlinux /bin/sh -c "sleep 1d"
     - docker ps --all
-    - docker exec aur-swift build.sh
+    - docker cp build.sh aur-swift:/root
+    - docker exec aur-swift /root/build.sh
     - docker cp /tmp/libkqueue/libkqueue-2.1.0-1-x86_64.pkg.tar.gz .
 
 deploy:
